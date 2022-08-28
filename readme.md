@@ -6,7 +6,7 @@ Consult agent dos vaults foram montado em containers separados, porém a idéia 
 
 # Cenário
 
-![enter image description here](https://i.imgur.com/d6ELesR.png)
+![Diagrama](https://i.imgur.com/d6ELesR.png)
 
 ## Utilização inicial
 
@@ -41,3 +41,11 @@ https://learn.hashicorp.com/tutorials/vault/ha-with-consul
 https://learn.hashicorp.com/tutorials/vault/reference-architecture
 https://www.vaultproject.io/docs/concepts/ha
 https://www.vaultproject.io/docs/configuration/storage/consul
+
+## Exemplo de WebUI do Consul depois de funcionando
+
+![Cluster Overview](https://i.imgur.com/Eh6Z0k4.png)
+
+![Consul Services](https://i.imgur.com/Rn4bnZU.png)
+
+![Consul nodes](https://i.imgur.com/ADROaCC.png)
