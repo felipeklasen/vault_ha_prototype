@@ -34,3 +34,10 @@ O cluster de servers Consul pode ser consultado através dos comandos abaixo:
     consul_s5  6636b66b-1bf6-6460-44d6-bf7e70770fae  10.1.42.105:8300  follower  true   3
 
 O HAProxy está redirecionando a porta 8080 para 8200 dos Vault Servers, sendo que eles precisam estar iniciados e unsealed para que funcione.
+
+## Material de referência
+
+https://learn.hashicorp.com/tutorials/vault/ha-with-consul
+https://learn.hashicorp.com/tutorials/vault/reference-architecture
+https://www.vaultproject.io/docs/concepts/ha
+https://www.vaultproject.io/docs/configuration/storage/consul
