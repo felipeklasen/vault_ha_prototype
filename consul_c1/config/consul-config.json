@@ -2,7 +2,7 @@
   "server": false,
   "datacenter": "dc1",
   "node_name": "consul_c1",
-  "data_dir": "/var/consul/data",
+  "data_dir": "/consul/data",
   "bind_addr": "10.1.42.10",
   "client_addr": "0.0.0.0",
   "retry_join": ["10.1.42.101", "10.1.42.102", "10.1.42.103", "10.1.42.104", "10.1.42.105"],
