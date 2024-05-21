@@ -1,0 +1,55 @@
+version: '3.6'
+
+services:
+
+  vault_s1:
+    build:
+      context: ./vault_s1
+      dockerfile: Dockerfile
+    ports:
+      - 8200:8200
+    volumes:
+      - ./vault_s1/config:/vault/config
+      - ./vault_s1/policies:/vault/policies
+      - ./vault_s1/data:/vault/data
+      - ./vault_s1/logs:/vault/logs
+    environment:
+      - VAULT_ADDR=http://127.0.0.1:8200
+    command: server -config=/vault/config/vault-config.hcl
+    cap_add:
+      - IPC_LOCK
+    networks:
+      vault_network:
+        ipv4_address: 10.1.42.201
+
+  consul_c1:
+    build:
+      context: ./consul_c1
+      dockerfile: Dockerfile
+    ports:
+      - 8503:8500
+    command: agent -config-file=/consul/config/config.json
+    volumes:
+      - ./consul_c1/config/consul-config.json:/consul/config/config.json
+      - ./consul_c1/data:/consul/data
+    networks:
+      vault_network:
+        ipv4_address: 10.1.42.10
+
+  consul_s1:
+    build:
+      context: ./consul_s1
+      dockerfile: Dockerfile
+    ports:
+      - 8500:8500
+    command: agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect 3 -config-file=/consul/config/config.json
+    volumes:
+      - ./consul_s1/config/consul-config.json:/consul/config/config.json
+      - ./consul_s1/data:/consul/data
+    networks:
+      vault_network:
+        ipv4_address: 10.1.42.101
+
+networks:
+  vault_network:
+    external: true
